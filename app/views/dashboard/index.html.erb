@@ -19,29 +19,23 @@
 
   <main class="col-sm-9 pt-3">
     <h1>Dashboard</h1>
-
+    <div class="col-sm-12 text-center">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+      <h4>Total Spent</h4>
+      <div class="text-muted"> <%= Category.joins(:transactions).size %> Total transaction(s)</div>
+      <div class="text-muted"> $<%= Category.joins(:transactions).sum(:ammount) %> Total spent</div>
+    </div>
     <section class="row text-center placeholders">
+    <% @categories.each do |category| %>
       <div class="col-6 col-sm-3 placeholder">
         <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-        <h4>Label</h4>
-        <div class="text-muted">Something else</div>
+        <h4><%= category.name %></h4>
+        <div class="text-muted"><%= category.transactions.count%> transaction(s)</div>
+        <div class="text-muted">$<%= category.transactions.sum(:ammount)%> spent</div>
       </div>
-      <div class="col-6 col-sm-3 placeholder">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-        <h4>Label</h4>
-        <span class="text-muted">Something else</span>
-      </div>
-      <div class="col-6 col-sm-3 placeholder">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-        <h4>Label</h4>
-        <span class="text-muted">Something else</span>
-      </div>
-      <div class="col-6 col-sm-3 placeholder">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-        <h4>Label</h4>
-        <span class="text-muted">Something else</span>
-      </div>
-    </section>
+    <% end %>
+
+  </section>
 
     <h2>Overview</h2>
     <div class="table-responsive">
