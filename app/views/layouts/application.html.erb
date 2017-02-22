@@ -26,7 +26,7 @@
         <li class="nav-item"><% if !user_signed_in? %> <%= link_to "Log In", new_user_session_path, class: "nav-link" %> <% end %></li>
         <li class="nav-item"><% if !user_signed_in? %> <%= link_to "Sing Up", new_user_registration_path, class: "nav-link" %> <% end %></li>
        </ul>
-       <%= form_tag root_path, method: "get", :enforce_utf8 => false do  %>
+       <%= form_tag root_path, method: "get", remote:true, :enforce_utf8 => false, id:"category_search" do  %>
        <p>
          <%= text_field_tag :search, params[:search] %>
          <%= submit_tag "Search", name: nil, class: "btn btn-outline-success my-2 my-sm-0"  %>

@@ -17,3 +17,9 @@
 //= require Chart.bundle
 //= require chartkick
 //= require_tree .
+$(function(){
+  $('#category_search input').keyup(function(){
+    $.get($('#category_search').attr("action"),$('#category_search').serialize(), null, "script");
+    return false;
+  });
+});

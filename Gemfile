@@ -19,6 +19,7 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'devise'
 gem "chartkick"
 gem 'textacular'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'byebug', platform: :mri

@@ -1,0 +1,60 @@
+<br>
+<h1>Dashboard</h1>
+<div class="col-sm-12 text-center">
+  <h4>All Transactions</h4>
+  <%= pie_chart Transaction.group(:name).sum(:ammount) %>
+  <div class="text-muted"> <%= Category.joins(:transactions).size %> Total transaction(s)</div>
+  <div class="text-muted"> $<%= Category.joins(:transactions).sum(:ammount) %> Total spent</div>
+</div>
+<br>
+<h4 class="text-center">Transactions by category</h4>
+
+<section class="row text-center placeholders">
+<% @categories.each do |category| %>
+  <div class="col-6 col-sm-3 placeholder">
+    <%= pie_chart category.transactions.group(:name).sum(:ammount) %>
+    <h4><%= category.name %></h4>
+    <div class="text-muted"><%= category.transactions.count%> transaction(s)</div>
+    <div class="text-muted">$<%= category.transactions.sum(:ammount)%> spent</div>
+  </div>
+<% end %>
+</section>
+
+<h2>Overview</h2>
+<div class="table-responsive">
+  <% @categories.each do |category| %>
+  <table class="table table-striped">
+      <tbody>
+          <tr>
+            <td><%= category.name %></td>
+            <td><%= link_to 'Edit', edit_user_category_path(current_user,category) %></td>
+            <td><%= link_to 'Destroy', user_category_path(current_user,category), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'New Transaction', new_category_transaction_path(category,Transaction.new)%></td>
+          </tr>
+          <table class="table table-sm right">
+            <thead>
+              <tr>
+                <th>Ammount</th>
+                <th>Name</th>
+                <th>Show</th>
+                <th>Edit</th>
+                <th>Destroy</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% category.transactions.each do |transaction| %>
+                  <tr>
+                    <td><%= transaction.ammount %></td>
+                    <td><%= transaction.name %></td>
+                    <td><%= link_to 'Show', category_transaction_path(category,transaction) %></td>
+                    <td><%= link_to 'Edit', edit_category_transaction_path(category,transaction) %></td>
+                    <td><%= link_to 'Destroy', category_transaction_path(category,transaction), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <br>
+      </tbody>
+    </table>
+    <% end %>
+</div>
