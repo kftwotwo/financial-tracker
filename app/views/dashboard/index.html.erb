@@ -20,15 +20,18 @@
   <main class="col-sm-9 pt-3">
     <h1>Dashboard</h1>
     <div class="col-sm-12 text-center">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-      <h4>Total Spent</h4>
+      <h4>All Transactions</h4>
+      <%= pie_chart Transaction.group(:name).sum(:ammount) %>
       <div class="text-muted"> <%= Category.joins(:transactions).size %> Total transaction(s)</div>
       <div class="text-muted"> $<%= Category.joins(:transactions).sum(:ammount) %> Total spent</div>
     </div>
+    <br>
+    <h4 class="text-center">Transactions by category</h4>
+
     <section class="row text-center placeholders">
     <% @categories.each do |category| %>
       <div class="col-6 col-sm-3 placeholder">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+        <%= pie_chart category.transactions.group(:name).sum(:ammount) %>
         <h4><%= category.name %></h4>
         <div class="text-muted"><%= category.transactions.count%> transaction(s)</div>
         <div class="text-muted">$<%= category.transactions.sum(:ammount)%> spent</div>
