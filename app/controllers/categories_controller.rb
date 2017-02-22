@@ -14,6 +14,7 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+    @category = Category.new
   end
 
   def create
@@ -39,7 +40,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to user_categories_path(current_user,@category), notice: 'Category was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Category was successfully destroyed.' }
       format.js
     end
   end

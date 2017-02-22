@@ -16,6 +16,8 @@ class TransactionsController < ApplicationController
   end
 
   def edit
+    @transaction = Transaction.new
+    @category = Category.find(params[:category_id])
   end
 
   def create
@@ -50,7 +52,7 @@ class TransactionsController < ApplicationController
     @category = Category.find(params[:category_id])
     @transaction.destroy
     respond_to do |format|
-      format.html { redirect_to category_transaction_path(@category, @transaction), notice: 'Transaction was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Transaction was successfully destroyed.' }
       format.js
     end
   end
