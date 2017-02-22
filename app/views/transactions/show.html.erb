@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Category:</strong>
+  <%= Category.find(@transaction.category_id).name %>
+</p>
+
+<p>
+  <strong>Ammount:</strong>
+  <%= @transaction.ammount %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @transaction.name %>
+</p>
+
+<%= link_to 'Edit', edit_category_transaction_path(@category,@transaction) %> |
+<%= link_to 'Back', category_transactions_path %>

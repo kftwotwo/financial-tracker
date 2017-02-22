@@ -1,0 +1,88 @@
+<div class="container-fluid">
+<div class="row">
+  <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" href="/">Overview</a>
+      </li>
+    </ul>
+    <hr>
+    <h6>Categories</h6>
+    <ul class="nav nav-pills flex-column">
+      <% @categories.each do |e| %>
+        <li class="nav-item">
+          <%= link_to e.name, user_category_path(current_user,e), class: "nav-link" %>
+        </li>
+        <% end %>
+    </ul>
+  </nav>
+
+  <main class="col-sm-9 pt-3">
+    <h1>Dashboard</h1>
+
+    <section class="row text-center placeholders">
+      <div class="col-6 col-sm-3 placeholder">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+        <h4>Label</h4>
+        <div class="text-muted">Something else</div>
+      </div>
+      <div class="col-6 col-sm-3 placeholder">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+        <h4>Label</h4>
+        <span class="text-muted">Something else</span>
+      </div>
+      <div class="col-6 col-sm-3 placeholder">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+        <h4>Label</h4>
+        <span class="text-muted">Something else</span>
+      </div>
+      <div class="col-6 col-sm-3 placeholder">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+        <h4>Label</h4>
+        <span class="text-muted">Something else</span>
+      </div>
+    </section>
+
+    <h2>Overview</h2>
+    <div class="table-responsive">
+      <% @categories.each do |category| %>
+      <table class="table table-striped">
+          <tbody>
+              <tr>
+                <td><%= category.name %></td>
+                <td><%= link_to 'Edit', edit_user_category_path(current_user,category) %></td>
+                <td><%= link_to 'Destroy', user_category_path(current_user,category), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to 'New Transaction', new_category_transaction_path(category,Transaction.new)%></td>
+              </tr>
+              <table class="table table-sm right">
+                <thead>
+                  <tr>
+                    <th>Ammount</th>
+                    <th>Name</th>
+                    <th>Show</th>
+                    <th>Edit</th>
+                    <th>Destroy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% category.transactions.each do |transaction| %>
+                      <tr>
+                        <td><%= transaction.ammount %></td>
+                        <td><%= transaction.name %></td>
+                        <td><%= link_to 'Show', category_transaction_path(category,transaction) %></td>
+                        <td><%= link_to 'Edit', edit_category_transaction_path(category,transaction) %></td>
+                        <td><%= link_to 'Destroy', category_transaction_path(category,transaction), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                      </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <br>
+          </tbody>
+        </table>
+        <% end %>
+    </div>
+  </main>
+</div>
+
+
+</div>
