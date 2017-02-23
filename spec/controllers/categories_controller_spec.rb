@@ -34,4 +34,16 @@ describe CategoriesController do
       expect(response).to render_template(:new)
     end
   end
+
+  describe "GET edit" do
+    it "renders a 200 response" do
+      get :edit, user_id: @user.id, id: @category.id
+      expect(response.status).to eq(200)
+    end
+
+    it "render the edit template" do
+      get :edit, user_id: @user.id, id: @category.id
+      expect(response).to render_template(:edit)
+    end
+  end
 end
