@@ -23,5 +23,15 @@ describe CategoriesController do
     end
   end
 
-  
+  describe "GET new" do
+    it "renders a 200 response" do
+      get :new, user_id: @user.id
+      expect(response.status).to eq(200)
+    end
+
+    it "renders the new template" do
+      get :new, user_id: @user.id
+      expect(response).to render_template(:new)
+    end
+  end
 end
