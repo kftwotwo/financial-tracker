@@ -13,8 +13,12 @@ This application keeps your transaction history. You can organize it by a catego
 Clone the repository and `cd` into your directory:
 ```
 $ bundle install
+$ rails db:create
+$ rails db:migrate
+$ rails db:test:prepare
+$ rails s
 ```
-
+URL: `localhost:3000`
 ## Known Bugs
 
 If you notice any bugs or problems you can fill out an issue [here](http://www.github.com/kftwotwo/financial-tracker/issues) or feel free to submit a pull request.
