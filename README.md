@@ -1,24 +1,52 @@
-# README
+# Financial Tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ This application keeps your transaction history, 2/23/17
 
-Things you may want to cover:
+ By [Kevin Finley](http://www.kfinley.com), [Diego Suarez](http://www.theworkofdiego.com)
 
-* Ruby version
+## Description
 
-* System dependencies
+This application keeps your transaction history. You can organize it by a category, you can edit/delete/create a category and transaction.
 
-* Configuration
+## Setup/Installation Requirements
 
-* Database creation
+Clone the repository and `cd` into your directory:
+```
+$ bundle install
+```
 
-* Database initialization
+## Known Bugs
 
-* How to run the test suite
+If you notice any bugs or problems you can fill out an issue [here](http://www.github.com/kftwotwo/financial-tracker/issues) or feel free to submit a pull request.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Contact details
+If you wish to contact us here is our information.<br>
 
-* Deployment instructions
+Kevin Finley<br>
+Email: kftwotwo@gmail.com<br>
+Github: [kftwotwo](https://www.github.com/kftwotwo)<br>
+Linkedin: [Kevin Finley](https://www.linkedin.com/in/kftwotwo/)
 
-* ...
+Diego Suarez<br>
+Email: diego.spb@gmail.com<br>
+Github: [diegoSPB](https://www.github.com/diegospb)<br>
+Linkedin: [Diego Suarez](https://www.linkedin.com/in/diegospb)
+
+## Contribute
+
+If you wish to contribute, create an issue and describe your idea with your branch `git checkout -b my-new-feature` then fork it and submit a pull request!
+
+## Technologies Used
+```
+HTML
+CSS
+Ruby
+Javascript
+jQuery
+Ajax
+```
+### License
+
+*This is under a MIT License*
+
+Copyright (c) 2016 **_Kevin Finley, Diego Suarez_**
