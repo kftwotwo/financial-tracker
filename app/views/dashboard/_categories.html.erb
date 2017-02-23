@@ -47,8 +47,8 @@
                     <td><%= transaction.ammount %></td>
                     <td><%= transaction.name %></td>
                     <td><%= link_to 'Show', category_transaction_path(category,transaction) %></td>
-                    <td><%= link_to 'Edit', edit_category_transaction_path(category,transaction) %></td>
-                    <td><%= link_to 'Destroy', category_transaction_path(category,transaction), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <td><%= link_to 'Edit Transaction', edit_category_transaction_path(category,transaction) %></td>
+                    <td><%= link_to 'Destroy Transaction', category_transaction_path(category,transaction), method: :delete, data: { confirm: 'Are you sure?' } %></td>
                   </tr>
               <% end %>
             </tbody>
