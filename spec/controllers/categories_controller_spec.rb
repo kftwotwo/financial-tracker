@@ -6,12 +6,7 @@ describe CategoriesController do
   before :each do
     @user = create(:user)
     @category = create(:category)
-    @attrs = attributes_for(:category)
     sign_in @user
-  end
-
-  def category_attributes
-    @attrs
   end
 
   after :each do
@@ -71,22 +66,17 @@ describe CategoriesController do
     end
   end
 
-  # describe "POST create" do
-  #   it "renders a 220 response" do
-  #     post :create, user_id: @user.id, category: FactoryGirl.attributes_for(Category.first)
-  #     expect(response.status).to eq(200)
-  #   end
-  # end
+  describe "POST create" do
+    it "renders a 302 response" do
+      post :create, user_id: @user.id, :category => {name: "Test"}
+      expect(response.status).to eq(302)
+    end
+  end
 
-  # describe "PATCH update" do
-  #   it "renders a 200 response" do
-  #     patch :update, category: FactoryGirl.attributes_for(@category)
-  #     expect(response.status).to eq(200)
-  #   end
-  #
-  #   it "render the update template" do
-  #     patch :update, category: FactoryGirl.attributes_for(@category)
-  #     expect(response).to render_template(:show)
-  #   end
-  # end
+  describe "PATCH update" do
+    it "renders a 302 response" do
+      patch :update, user_id: @user.id, id: @category.id, :category => {name: 'test2'}
+      expect(response.status).to eq(302)
+    end
+  end
 end
