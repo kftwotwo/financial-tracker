@@ -30,6 +30,10 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'poltergeist'
+  gem 'phantomjs'
+  gem 'selenium-webdriver'
+  gem 'rails-controller-testing'
 end
 
 group :development do
